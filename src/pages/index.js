@@ -51,7 +51,7 @@ function PathCards() {
                 Production-ready SDKs for Swift, TypeScript, and Python —
                 from recording to structured data in a few API calls.
               </p>
-              <Link className={clsx('button button--outline button--primary button--lg', styles.pathButton)} to="/sdk/intro">
+              <Link className={clsx('button button--outline button--primary button--lg', styles.pathButton)} href="https://sdk.modelhealth.io">
                 View SDK →
               </Link>
             </div>
