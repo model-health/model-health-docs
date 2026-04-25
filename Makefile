@@ -1,4 +1,4 @@
-.PHONY: help start build install
+.PHONY: help start build install clean
 
 help:
 	@echo "Model Health Documentation"
@@ -7,6 +7,7 @@ help:
 	@echo "  make install   - Install dependencies"
 	@echo "  make start     - Start development server"
 	@echo "  make build     - Build static site"
+	@echo "  make clean     - Remove build/ and .docusaurus/ cache"
 
 install:
 	npm install
@@ -16,3 +17,6 @@ start:
 
 build:
 	npm run build
+
+clean:
+	rm -rf build .docusaurus
