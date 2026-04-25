@@ -1,37 +1,25 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
-const { sdkVersion } = require('./version.json');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Add 3D Biomechanical Analysis to Your Product',
-  tagline: 'Biomechanical analysis from smartphone videos',
+  title: 'Model Health Documentation',
+  tagline: 'Guides, best practices and reference for using Model Health',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
   url: 'https://docs.modelhealth.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'model-health', // Usually your GitHub org/user name.
-  projectName: 'model-health', // Usually your repo name.
+  organizationName: 'model-health',
+  projectName: 'model-health-docs',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may wantbui
-  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
 
-  // Custom fields to expose environment variables to client-side
   customFields: {
     DOCUSAURUS_API_URL: process.env.DOCUSAURUS_API_URL,
     BUILD_ENV: process.env.BUILD_ENV,
@@ -39,19 +27,10 @@ const config = {
 
   plugins: [
     [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'product',
-        path: 'docs',
-        routeBasePath: 'docs',
-        sidebarPath: require.resolve('./docs-sidebars.js'),
-      },
-    ],
-    [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
         hashed: true,
-        docsRouteBasePath: ['docs', 'sdk'],
+        docsRouteBasePath: ['docs'],
         indexDocs: true,
         indexPages: false,
         searchBarPosition: 'right',
@@ -62,15 +41,16 @@ const config = {
     ],
   ],
 
+
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: 'sdk',
-          routeBasePath: 'sdk',
-          sidebarPath: require.resolve('./sdk-sidebars.js'),
+          path: 'docs',
+          routeBasePath: 'docs',
+          sidebarPath: require.resolve('./docs-sidebars.js'),
         },
         blog: false,
         theme: {
@@ -88,7 +68,6 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
-      // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'Model Health',
@@ -103,6 +82,11 @@ const config = {
             position: 'left',
           },
           {
+            href: 'https://sdk.modelhealth.io',
+            label: 'SDK',
+            position: 'left',
+          },
+          {
             href: 'https://app.modelhealth.io',
             label: 'Sign in',
             position: 'right',
@@ -111,7 +95,7 @@ const config = {
       },
       footer: {
         style: 'light',
-        copyright: `SDK v${sdkVersion} · Copyright © ${new Date().getFullYear()} Model Health.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Model Health.`,
       },
       prism: {
         theme: require('prism-react-renderer').themes.github,

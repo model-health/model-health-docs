@@ -2,8 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -22,31 +22,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Get version from tag
-        id: version
-        run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Deploying docs for version: $VERSION"
-
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: npm
-            
-      - name: Debug - Check copied files
-        run: |
-          echo "=== Check if index.html exists ==="
-          test -f static/swift/index.html && echo "✅ Swift index.html exists" || echo "❌ Swift index.html missing"
-          test -f static/typescript/index.html && echo "✅ TS index.html exists" || echo "❌ TS index.html missing"
 
       - name: Install Docusaurus dependencies
         run: npm ci
-      
+
       - name: Build Docusaurus site
         run: npm run build
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
