@@ -13,17 +13,17 @@ export default function DocSidebarItemCategoryWrapper(props) {
     return <DocSidebarItemCategory {...props} />;
   }
 
-  const label = (
-    <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <span className="sidebar-category-icon" style={{ display: 'flex', alignItems: 'center' }}>
-        <IconComponent size={15} />
+  const patchedItem = {
+    ...item,
+    label: (
+      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <span className="sidebar-category-icon" style={{ display: 'flex', alignItems: 'center' }}>
+          <IconComponent size={15} />
+        </span>
+        {item.label}
       </span>
-      {item.label}
-    </span>
-  );
-  label.toString = () => String(item.label);
-
-  const patchedItem = { ...item, label };
+    ),
+  };
 
   return <DocSidebarItemCategory {...props} item={patchedItem} />;
 }
