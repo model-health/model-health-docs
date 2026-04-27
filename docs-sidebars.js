@@ -45,8 +45,7 @@ const sidebars = {
       collapsed: true,
       customProps: { icon: 'Settings' },
       items: [
-        'advanced-settings',
-        'advanced-analysis',
+        'advanced-settings'
       ],
     },
     {
