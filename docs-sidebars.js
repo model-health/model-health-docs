@@ -59,6 +59,12 @@ const sidebars = {
         'troubleshooting',
       ],
     },
+    {
+      type: 'link',
+      label: 'SDK Documentation',
+      href: 'https://sdk.modelhealth.io',
+      customProps: { icon: 'PocketKnife' },
+    },
   ],
 };
 

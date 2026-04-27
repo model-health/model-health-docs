@@ -1,8 +1,8 @@
 import React from 'react';
-import DocSidebarItemCategory from '@theme-original/DocSidebarItem/Category';
-import { Rocket, Video, Lightbulb, Settings, BookMarked } from 'lucide-react';
+import DocSidebarItemLink from '@theme-original/DocSidebarItem/Link';
+import { Rocket, Video, Lightbulb, Settings, BookMarked, PocketKnife } from 'lucide-react';
 
-const iconMap = { Rocket, Video, Lightbulb, Settings, BookMarked };
+const iconMap = { Rocket, Video, Lightbulb, Settings, BookMarked, PocketKnife };
 
 function labelWithTitle(jsxNode, titleStr) {
   return new Proxy(jsxNode, {
@@ -15,13 +15,13 @@ function labelWithTitle(jsxNode, titleStr) {
   });
 }
 
-export default function DocSidebarItemCategoryWrapper(props) {
+export default function DocSidebarItemLinkWrapper(props) {
   const { item } = props;
   const iconName = item.customProps?.icon;
   const IconComponent = iconName ? iconMap[iconName] : null;
 
   if (!IconComponent) {
-    return <DocSidebarItemCategory {...props} />;
+    return <DocSidebarItemLink {...props} />;
   }
 
   const labelNode = (
@@ -35,8 +35,8 @@ export default function DocSidebarItemCategoryWrapper(props) {
 
   const patchedItem = {
     ...item,
-    label: labelWithTitle(labelNode, item.label),
+    label: labelWithTitle(labelNode, typeof item.label === 'string' ? item.label : ''),
   };
 
-  return <DocSidebarItemCategory {...props} item={patchedItem} />;
+  return <DocSidebarItemLink {...props} item={patchedItem} />;
 }

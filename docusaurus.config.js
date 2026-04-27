@@ -13,7 +13,12 @@ const config = {
   projectName: 'model-health-docs',
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -32,6 +37,7 @@ const config = {
         hashed: true,
         docsRouteBasePath: ['docs'],
         indexDocs: true,
+        indexBlog: false,
         indexPages: false,
         searchBarPosition: 'right',
         searchBarShortcutHint: true,
@@ -76,16 +82,6 @@ const config = {
           src: 'img/logo.png',
         },
         items: [
-          {
-            to: '/docs/overview',
-            label: 'Overview',
-            position: 'left',
-          },
-          {
-            href: 'https://sdk.modelhealth.io',
-            label: 'SDK',
-            position: 'left',
-          },
           {
             href: 'https://app.modelhealth.io',
             label: 'Sign in',

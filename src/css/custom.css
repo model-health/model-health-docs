@@ -118,6 +118,24 @@
   background-color: var(--brand-dark-green);
 }
 
+/* SDK link at bottom of sidebar */
+.theme-doc-sidebar-item-link:has(a[href="https://sdk.modelhealth.io"]) {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.theme-doc-sidebar-item-link:has(a[href="https://sdk.modelhealth.io"]) .menu__link {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background: none !important;
+}
+
 /* ── End Sidebar ─────────────────────────────────────────── */
 
 /* ── Search ──────────────────────────────────────────────── */

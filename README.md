@@ -1,6 +1,6 @@
 # Model Health Documentation
 
-This repository contains the product documentation website for Model Health, built with [Docusaurus](https://docusaurus.io/). Hosted at [docs.modelhealth.io](https://docs.modelhealth.io).
+Product documentation for Model Health, built with [Docusaurus](https://docusaurus.io/). Hosted at [docs.modelhealth.io](https://docs.modelhealth.io).
 
 For SDK documentation, see [model-health-sdk-docs](https://github.com/model-health/model-health-sdk-docs) → [sdk.modelhealth.io](https://sdk.modelhealth.io).
 
@@ -15,12 +15,19 @@ For SDK documentation, see [model-health-sdk-docs](https://github.com/model-heal
 make install
 ```
 
-### Running the docs site
+### Development server
 ```bash
-make local
+make dev
 ```
 
-This starts a local development server at `http://localhost:3000`.
+Starts a local development server at `http://localhost:3000`. Note: search is unavailable in dev mode.
+
+### Production preview (with search)
+```bash
+make prod
+```
+
+Builds the site and serves it locally at `http://localhost:3000`.
 
 ## Deployment
 
@@ -32,10 +39,11 @@ model-health-docs/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions deployment
-├── docs/                        # Product documentation markdown files
+├── docs/                       # Documentation markdown files
 ├── src/
 │   ├── css/                    # Custom CSS
-│   └── pages/                  # Custom pages (home page)
+│   ├── pages/                  # Custom pages
+│   └── theme/                  # Swizzled Docusaurus components
 ├── static/                     # Static assets
 │   └── img/
 ├── docusaurus.config.js        # Docusaurus configuration
