@@ -1,6 +1,7 @@
 // @ts-check
 let docsVersion = "dev";
 try {
+  // @ts-ignore
   docsVersion = require("./version.json").docsVersion;
 } catch (_) {}
 

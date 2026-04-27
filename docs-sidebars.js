@@ -33,10 +33,10 @@ const sidebars = {
       customProps: { icon: 'Lightbulb' },
       items: [
         'howto-compare-activities',
+        'howto-compare-subjects',
         'analysis-group-leaderboards',
         'export-data-python',
-        'howto-share-activity',
-        'howto-batch-record'
+        'howto-share-activity'
       ],
     },
     {
