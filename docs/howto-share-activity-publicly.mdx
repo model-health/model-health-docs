@@ -1,7 +1,63 @@
 ---
 id: howto-share-activity
-title: Share data publicly
-sidebar_label: Share data publicly
+title: Share a dashboard publicly
+sidebar_label: Share a dashboard publicly
 ---
 
-Coming soon.
+export const ZoomableImage = ({ src, alt, caption }) => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <>
+      <div style={{textAlign: 'center'}}>
+        <img
+          src={src} alt={alt}
+          onClick={() => setOpen(true)}
+          style={{width: '80%', cursor: 'zoom-in', borderRadius: '6px'}}
+        />
+        {caption && <p style={{fontSize: '0.8rem', color: 'var(--ifm-color-secondary-darkest)', marginTop: '0.4rem'}}>{caption}</p>}
+      </div>
+      {open && (
+        <div onClick={() => setOpen(false)} style={{position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999, cursor: 'zoom-out', padding: '2rem'}}>
+          <img src={src} alt={alt} style={{maxWidth: '90vw', maxHeight: '90vh', borderRadius: '8px', boxShadow: '0 8px 40px rgba(0,0,0,0.6)'}} />
+        </div>
+      )}
+    </>
+  );
+};
+
+
+import React from 'react';
+
+The subject's dashboard view lets you share one or multiple selected activities with third party — useful for sharing insigths to non-users or colleagues without access to your organization's account.
+
+Sharing a dashboard publicly will create a unique public link to your dashboard (View only): including recorded videos, 3D model, raw kinematics data and summary metrics.
+Only selected activities are being shared. 
+
+This is an example of publicly shared link: . 
+
+:::warning
+Make sure to always ask consent of the participants before sharing their data with a third party.
+:::
+
+### Step 1. Select the activities you want to share from a subject's dashboard
+
+In the **Activities** panel on the left, click any number of activities to load them into the metrics or Replay dashboard.
+
+<ZoomableImage
+  src="/img/docs/howto-share-data-publicly/howto-share-select-activities.png"
+  alt="Select any number of completed activities to share"
+  caption="Click any number of completed activity in the left panel to load it into the dashboard."
+/>
+
+### Step 2. Generate a sharing link to the loaded dashboard
+
+Click the Share icon on the top right corner of the screen to generate a public sharing link to the loaded dashboard.
+
+<ZoomableImage
+  src="/img/docs/howto-share-data-publicly/howto-share-button.png"
+  alt="Click the share icon on the top right corner of the screen"
+  caption="Share the loaded dashboard with an external user by clicking on the share icon on the top right of the screen"
+/>
+
+### Step 3. Copy the generated link
+

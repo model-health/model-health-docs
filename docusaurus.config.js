@@ -1,4 +1,5 @@
 // @ts-check
+const { sdkVersion } = require('./version.json');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -91,7 +92,7 @@ const config = {
       },
       footer: {
         style: 'light',
-        copyright: `Copyright © ${new Date().getFullYear()} Model Health.`,
+        copyright: `App v${sdkVersion} · Copyright © ${new Date().getFullYear()} Model Health, Inc.`,
       },
       prism: {
         theme: require('prism-react-renderer').themes.github,
