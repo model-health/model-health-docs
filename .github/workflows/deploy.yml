@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v6
@@ -30,6 +32,11 @@ jobs:
 
       - name: Install Docusaurus dependencies
         run: npm ci
+
+      - name: Write version.json
+        run: |
+          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "{\"docsVersion\": \"${TAG#v}\"}" > version.json
 
       - name: Build Docusaurus site
         run: npm run build

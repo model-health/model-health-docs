@@ -6,6 +6,7 @@ node_modules/
 
 # Generated files
 .docusaurus
+version.json
 .cache-loader
 .env
 .env.local

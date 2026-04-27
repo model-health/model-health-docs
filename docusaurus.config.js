@@ -1,5 +1,8 @@
 // @ts-check
-const { docsVersion } = require('./version.json');
+let docsVersion = "dev";
+try {
+  docsVersion = require("./version.json").docsVersion;
+} catch (_) {}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {

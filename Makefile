@@ -1,4 +1,4 @@
-.PHONY: help start build serve install clean
+.PHONY: help start build serve install clean release
 
 help:
 	@echo "Model Health Documentation"
@@ -9,6 +9,7 @@ help:
 	@echo "  make build     - Build static site"
 	@echo "  make prod      - Serve the production build (search works here)"
 	@echo "  make clean     - Remove build/ and .docusaurus/ cache"
+	@echo "  make release   - Bump version, tag and push a new release"
 
 install:
 	npm install
@@ -24,3 +25,6 @@ prod: build
 
 clean:
 	rm -rf build .docusaurus
+
+release:
+	python3 scripts/release.py

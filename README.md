@@ -29,10 +29,6 @@ make prod
 
 Builds the site and serves it locally at `http://localhost:3000`.
 
-## Deployment
-
-Documentation is automatically deployed to GitHub Pages at `https://docs.modelhealth.io` on every push to `main`.
-
 ## Project Structure
 ```
 model-health-docs/
@@ -51,13 +47,20 @@ model-health-docs/
 └── package.json
 ```
 
-## Updating Documentation
+## Releasing
 
-All content in `docs/`, `src/` and `static/img/` can be modified and committed directly. Changes deploy automatically on push to `main`.
+To cut a new release:
 
-## Custom Domain
+```bash
+make release
+```
 
-The custom domain `docs.modelhealth.io` is configured via:
-- `static/CNAME` file
-- AWS Route 53: `docs.modelhealth.io` → CNAME → `model-health.github.io`
-- GitHub Pages custom domain settings
+The script will:
+1. Show the current version (from the latest git tag)
+2. Ask whether to bump major, minor or patch
+3. Update `package.json`
+4. Commit, tag and push (no push if `--dry-run` is specified as a command line argument)
+
+CI generates `version.json` from the tag at build time — this file is not committed.
+
+This script will only run on `main`, to override this use `--force`.
