@@ -1,0 +1,80 @@
+---
+id: analysis-group-leaderboards
+title: Create a leaderboard
+sidebar_label: Create a leaderboard
+---
+
+export const ZoomableImage = ({ src, alt, caption }) => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <>
+      <div style={{textAlign: 'center'}}>
+        <img
+          src={src} alt={alt}
+          onClick={() => setOpen(true)}
+          style={{width: '80%', cursor: 'zoom-in', borderRadius: '6px'}}
+        />
+        {caption && <p style={{fontSize: '0.8rem', color: 'var(--ifm-color-secondary-darkest)', marginTop: '0.4rem'}}>{caption}</p>}
+      </div>
+      {open && (
+        <div onClick={() => setOpen(false)} style={{position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999, cursor: 'zoom-out', padding: '2rem'}}>
+          <img src={src} alt={alt} style={{maxWidth: '90vw', maxHeight: '90vh', borderRadius: '8px', boxShadow: '0 8px 40px rgba(0,0,0,0.6)'}} />
+        </div>
+      )}
+    </>
+  );
+};
+
+import React from 'react';
+
+Leaderboards let you compare a key metric across all subjects in a group — useful for benchmarking cohorts, tracking team progress, or identifying outliers at a glance.
+
+### Step 1. Go to Groups and create a new group
+
+Navigate to **Groups** in the left sidebar. Click **+ Create group** in the top-right corner.
+
+<ZoomableImage
+  src="/img/docs/howto-create-leaderboards/howto-create-leaderboard-1.png"
+  alt="Groups page with Create group button"
+  caption="The Groups page lists all your subject cohorts. Click '+ Create group' to get started."
+/>
+
+### Step 2. Name and configure the group
+
+In the panel that slides in, enter a **Group name**, search for and add **Subjects**, and optionally add a short description. Click **Create group** to save.
+
+<ZoomableImage
+  src="/img/docs/howto-create-leaderboards/howto-create-leaderboard-2.png"
+  alt="Create a new group panel"
+  caption="Give the group a name, add existing subjects, and optionally add a description before creating."
+/>
+
+### Step 3. Open the group and view the leaderboard
+
+Once the group is created, open it from the Groups list. You'll see all assigned subjects listed. Click **View group leaderboard** in the top-right to open the leaderboard view.
+
+<ZoomableImage
+  src="/img/docs/howto-create-leaderboards/howto-create-leaderboard-3.png"
+  alt="Group page with View group leaderboard button"
+  caption="From the group detail page, click 'View group leaderboard' to open the comparison chart."
+/>
+
+### Step 4. Select an activity type and metric
+
+In the leaderboard view, use the **Select activity** dropdown to choose an activity type, then use **Select metric** to pick the measurement to compare across subjects.
+
+<ZoomableImage
+  src="/img/docs/howto-create-leaderboards/howto-create-leaderboard-5.png"
+  alt="Leaderboard with activity and metric selectors"
+  caption="Select an activity type and a metric to populate the leaderboard chart."
+/>
+
+### Step 5. Read the leaderboard
+
+Each subject is plotted as a dot on the chart. Dark dots represent the most recent recording; lighter dots show older recordings. The dashed line marks the group average. Use the **Recent 3 / Recent 5 / Recent 10** tabs to control how many sessions per subject are shown.
+
+<ZoomableImage
+  src="/img/docs/howto-create-leaderboards/howto-create-leaderboard-6.png"
+  alt="Populated leaderboard showing squat depth across subjects"
+  caption="The leaderboard plots each subject's most recent and historical values for the selected metric, with the group average shown as a dashed line."
+/>
