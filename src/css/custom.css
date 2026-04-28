@@ -149,6 +149,16 @@
   transform: translateX(-50%);
 }
 
+@media (max-width: 996px) {
+  .navbar__search {
+    position: static;
+    transform: none;
+  }
+  .navbar__search-input {
+    width: 100% !important;
+  }
+}
+
 .navbar__search-input {
   width: 400px;
   border-radius: 8px;
@@ -185,6 +195,27 @@
   color: #A5FF01;
 }
 /* ── End Search ───────────────────────────────────────────── */
+
+/* ── Overview tiles grid ─────────────────────────────────── */
+.overview-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .overview-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 996px) {
+  .overview-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* ── End Overview tiles grid ─────────────────────────────── */
 
 [data-theme='dark'] {
   /* Primary color scale — Flashy Green for dark mode accents */
