@@ -4,61 +4,127 @@ title: Advanced Settings
 sidebar_label: Advanced Settings
 ---
 
-:::tip
-The advanced settings menu provides configuration options that let you customize how we process and analyze your data. For per-activity parameter recommendations (which frame rate and filter frequency to use for each task), see [Activity Recommendations](/docs/activity-recommendations). To understand the analysis modules that consume these settings, see [Advanced Analysis](/docs/advanced-analysis).
+export const ZoomableImage = ({ src, alt, caption }) => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <>
+      <div style={{textAlign: 'center'}}>
+        <img
+          src={src} alt={alt}
+          onClick={() => setOpen(true)}
+          style={{width: '80%', cursor: 'zoom-in', borderRadius: '6px'}}
+        />
+        {caption && <p style={{fontSize: '0.8rem', color: 'var(--ifm-color-secondary-darkest)', marginTop: '0.4rem'}}>{caption}</p>}
+      </div>
+      {open && (
+        <div onClick={() => setOpen(false)} style={{position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999, cursor: 'zoom-out', padding: '2rem'}}>
+          <img src={src} alt={alt} style={{maxWidth: '90vw', maxHeight: '90vh', borderRadius: '8px', boxShadow: '0 8px 40px rgba(0,0,0,0.6)'}} />
+        </div>
+      )}
+    </>
+  );
+};
+
+import React from 'react';
+
+:::warning Overview
+Advanced settings let you customize how we calibrate your set up, record and analyze your data. A part from checkerboard settings, we recommend keeping the default value unchanged, as they have been carefully selected to provide the best results.  
 :::
 
-Access advanced settings by tapping the **Advanced Settings** button on the neutral pose screen.
+Settings are spread across three panels that appear at different points in the recording flow.
 
-![Advanced Settings button location](/img/docs/advanced-settings/doc1.png)
+---
 
-## Scaling Setup
+## 1. Checkerboard Settings
+**Where:** During session setup, at the *Position & Calibrate* step.
 
-We use data from the neutral pose to scale the musculoskeletal model to the subject's anthropometry.
+Let you configure the physical checkerboard used to calibrate your cameras. Open the **Checkerboard settings** panel on the right side of the calibration screen.
 
-**By default**, we assume the subject stands upright with feet pointing forward — straight back and no bending or rotation at the hips, knees, or ankles.
+<ZoomableImage
+  src="/img/docs/advanced-settings/setup-calib-settings.png"
+  alt="Checkerboard settings panel"
+  caption="Checkerboard settings appear during the calibration step of session setup."
+/>
 
-**If the subject cannot adopt this pose**, select the **"Any pose"** scaling setup. This does not assume a specific posture but still requires all body segments to be visible by at least two cameras.
+### Board position
+Choose how the checkerboard will be placed during calibration:
+- **Perpendicular to the floor** *(default)* — board is held or stood upright.
+- **Lying on the floor** — board lies flat on the ground.
 
-We recommend using the default scaling setup unless the subject cannot stand in an upright neutral pose.
+### Rows and Columns
+Enter the number of **inner corner rows** and **inner corner columns** on your printed board. Default is **4 rows × 5 columns**. Match these exactly to your printed checkerboard.
 
-## Frame Rate
+### Square size (mm)
+Enter the size of one square on your checkerboard in millimetres. Default is **35 mm**. Measure your printed board and enter the accurate value — an incorrect size will affect the scale of the reconstruction.
 
-You can record videos at **60, 120, or 240 Hz**. The default is **120 Hz**.
-
-- Higher frame rates may improve accuracy for dynamic tasks like running, but increase processing time.
-- For most cases, **120 Hz is recommended**.
-- If processing speed is a concern, **60 Hz** reduces computation time — consider applying a filter (see below) to mitigate the increased noise.
-
-:::warning
-The frame rate applies to **all motion trials** in your session.
+:::warning Adjusting the default
+Adjusting checkerboard parameters on this panel only applies for the ongoing setup calibration step.
+If you want to adjust the default value for all future setups, you can **update your checkerboard dimensions in the app Settings** — this is critical for accurate measurements.
+<ZoomableImage src="/img/docs/getting-started/update-checkerboard-default.png" alt="Checkerboard setup" style={{width: '280px', marginLeft: '2rem', marginBottom: '0.5rem'}} />
+ 
 :::
 
-## Musculoskeletal Model
+---
 
-We support two models:
+## 2. Subject Scaling Settings
+**When:** During the recording flow, at the *Record static pose* step.
 
-- **Full body model** — a 33 degree-of-freedom musculoskeletal model from [Lai et al. 2017](https://pubmed.ncbi.nlm.nih.gov/28900782/) with modified hip abductor muscle paths from [Uhlrich et al. 2022](https://pubmed.ncbi.nlm.nih.gov/35798755/).
-- **Full body model with ISB shoulder** *(default)* — same as above, but with a 6 degree-of-freedom shoulder complex joint incorporating a scapulothoracic body with 3 translational degrees of freedom relative to the torso. The glenohumeral joint uses the Y-X-Y rotation sequence [recommended by the ISB](https://pubmed.ncbi.nlm.nih.gov/15844264/). Recommended for upper extremity tasks (e.g., throwing), but suitable for all tasks.
+Optionally adjust your model scaling settings before recording the neutral pose. Open the **Subject scaling settings** panel on the right.
 
-## Marker Augmenter Model
+<ZoomableImage
+  src="/img/docs/advanced-settings/model-calib-settings.png"
+  alt="Subject scaling settings panel"
+  caption="Subject scaling settings appear during the static pose recording step."
+/>
 
-We use an LSTM model to predict the 3D position of 43 anatomical markers from 20 video keypoints. These markers are used as input to OpenSim for inverse kinematics.
+### Scaling setup
+We use the neutral pose to scale the musculoskeletal model to the subject's body dimensions.
 
-- **v0.3** *(default)* — more accurate and robust across different activities, inspired by [this paper](https://www.biorxiv.org/content/10.1101/2024.07.13.603382v1). Recommended for most use cases.
-- **v0.2** — may produce better results specifically for walking and running, as it was trained more heavily on gait data.
+- **Upright standing pose** *(recommended, default)* — assumes the subject stands upright with feet pointing forward, straight back, no bending or rotation at hips, knees, or ankles.
+- **Any pose** — use this if the subject cannot adopt an upright neutral pose. Does not assume a specific posture but still requires all body segments to be visible by at least two cameras.
 
-## Filter Frequency
+We recommend the default unless the subject is unable to stand in an upright neutral pose.
 
-We apply a low-pass Butterworth filter to smooth 2D video keypoints.
+### Musculoskeletal model
+Choose the biomechanical model to use for this analysis:
 
-**Default behavior:**
-- Half the frame rate (e.g., 30 Hz at 60 Hz recording), except for gait activities which default to **12 Hz**.
+- **Full body model with ISB shoulder** *(default)* — a 33 degree-of-freedom model based on [Lai et al. 2017](https://pubmed.ncbi.nlm.nih.gov/28900782/) with modified hip abductor paths from [Uhlrich et al. 2022](https://pubmed.ncbi.nlm.nih.gov/35798755/), plus a 6 degree-of-freedom shoulder complex using the ISB-recommended Y-X-Y glenohumeral rotation sequence ([Wu et al. 2005](https://pubmed.ncbi.nlm.nih.gov/15844264/)). Recommended for upper extremity tasks and suitable for all activities.
+- **Full body model** — the same model without the ISB shoulder complex.
 
-You can enter a custom filter frequency here.
+### Core engine
+The core engine runs the marker augmentation and inverse kinematics pipeline.
+
+- **v1.0** *(recommended, default)* — latest version, more accurate and robust across activities. Recommended for most use cases.
+- **v0.3** *(old model, default until 04-01-2026)* — previous version.
+- **v0.2** *(old model, default until 07-30-2023)* — legacy version. 
+---
+
+## 3. Video Recording Settings
+**When:** During the recording flow, at the *Activity recording* step.
+
+Optionally adjust recording parameters before starting a trial. Click the **Recording settings** button at the bottom of the activity recording screen.
+
+<ZoomableImage
+  src="/img/docs/advanced-settings/video-recording-settings.png"
+  alt="Video recording settings panel"
+  caption="Video recording settings appear on the activity recording screen, before starting a trial."
+/>
+
+### Frame rate
+Record videos at **60, 120, or 240 fps**. There is a different default based on the activity type.
+
+- Higher frame rates capture fast movements more accurately but increase upload and processing time.
+- **120 fps** is recommended for most activities.
+- Use **60 fps** if processing speed is a concern — consider applying a filter (see below) to reduce noise.
+
+### Filter frequency
+We apply a low-pass Butterworth filter to smooth 2D video keypoints before reconstruction.
+
+**Default behavior:** half the frame rate (e.g. 60 Hz at 120 fps recording), except for gait activities which default to **12 Hz**.
+
+Enter a custom value in Hz, or just leave as `default`.
 
 :::warning
-- This filter frequency applies to **all motion trials** in your session.
-- Per the Nyquist theorem, the filter frequency must be less than half the frame rate. If you enter a higher value, we will cap it at half the frame rate.
-- Consult the literature for a suitable filter frequency for your specific task. If unsure, use the default.
+- Per the Nyquist theorem, the filter frequency must be less than half the frame rate. Values above this limit will be capped automatically.
+- Consult the literature for a suitable frequency for your specific task. When in doubt, keep the default.
 :::
