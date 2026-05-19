@@ -1,18 +1,14 @@
 ---
 id: musculoskeletal-model
-title: Musculoskeletal Model
-sidebar_label: Musculoskeletal Model
+title: Musculoskeletal model
+sidebar_label: Musculoskeletal model
 ---
 
-:::note 
+:::note
 This page is a technical reference covering joint coordinate systems, degrees of freedom, and anatomical definitions.
 :::
 
-Our platform is built on [OpenSim](https://opensim.stanford.edu/), a widely used open-source software for musculoskeletal simulation that has supported thousands of researchers and professionals worldwide for over 15 years [[Delp et al. 2007](https://pubmed.ncbi.nlm.nih.gov/18018689/), [Seth et al. 2018](https://pubmed.ncbi.nlm.nih.gov/30048444/)]. We use a musculoskeletal model from the OpenSim library that incorporates physiologically accurate joint definitions. This means that joints are constrained to move in ways that reflect real human anatomy—for example, the hip can rotate in three directions but cannot translate, just like a ball-and-socket joint in the human body. 
-
-We use a scientifically-validated musculoskeletal model with 36 degrees of freedom [[Rajagopal 2016](https://pubmed.ncbi.nlm.nih.gov/27392337/), [Lai et al. 2017](https://pubmed.ncbi.nlm.nih.gov/28900782/), [Uhlrich et al. 2022](https://pubmed.ncbi.nlm.nih.gov/35798755/)].
-
-Joints are constrained to move in anatomically realistic ways — for example, the hip can rotate in three directions but cannot translate, just like a ball-and-socket joint in the human body.
+Our platform is built on [OpenSim](https://opensim.stanford.edu/), a widely used open-source musculoskeletal simulation framework with over 15 years of use across research and clinical settings [[Delp et al. 2007](https://pubmed.ncbi.nlm.nih.gov/18018689/), [Seth et al. 2018](https://pubmed.ncbi.nlm.nih.gov/30048444/)]. We use a scientifically-validated model with 36 degrees of freedom [[Rajagopal 2016](https://pubmed.ncbi.nlm.nih.gov/27392337/), [Lai et al. 2017](https://pubmed.ncbi.nlm.nih.gov/28900782/), [Uhlrich et al. 2022](https://pubmed.ncbi.nlm.nih.gov/35798755/)] that incorporates physiologically accurate joint definitions — joints are constrained to move in ways that reflect real human anatomy (e.g., the hip rotates in three directions but cannot translate, like a ball-and-socket joint).
 
 ![Musculoskeletal model overview](/img/docs/musculoskeletal-model/lai-uhlrich-2022-shoulder.png)
 
@@ -42,15 +38,15 @@ Pelvis rotations follow ZXY (body-fixed) Euler angle convention: tilt → list �
 
 **Translations**
 
-- **Pelvis tx** — forward/backward movement. Positive = pelvis translates forward.
+- **Pelvis tx** — forward/backward translation. Positive = forward.
 
   ![Pelvis tx](/img/docs/musculoskeletal-model/pelvis-tx.png)
 
-- **Pelvis ty** — up/down movement. Positive = pelvis translates upward.
+- **Pelvis ty** — up/down translation. Positive = upward.
 
   ![Pelvis ty](/img/docs/musculoskeletal-model/pelvis-ty.png)
 
-- **Pelvis tz** — side-to-side movement. Positive = pelvis translates to the right.
+- **Pelvis tz** — side-to-side translation. Positive = rightward.
 
   ![Pelvis tz](/img/docs/musculoskeletal-model/pelvis-tz.png)
 
@@ -142,15 +138,15 @@ Lumbar rotations follow ZXY (body-fixed) Euler angle convention: flexion → ben
 
 **Translations** (scapulothoracic segment relative to torso)
 
-- **Shoulder tx** — forward/backward. Positive = forward.
+- **Shoulder tx** — forward/backward translation. Positive = forward.
 
   ![Shoulder tx](/img/docs/musculoskeletal-model/shoulder-tx.png)
 
-- **Shoulder ty** — up/down. Positive = upward.
+- **Shoulder ty** — up/down translation. Positive = upward.
 
   ![Shoulder ty](/img/docs/musculoskeletal-model/shoulder-ty.png)
 
-- **Shoulder tz** — side-to-side. Positive = medially.
+- **Shoulder tz** — side-to-side translation. Positive = medially.
 
   ![Shoulder tz](/img/docs/musculoskeletal-model/shoulder-tz.png)
 
@@ -160,7 +156,7 @@ Lumbar rotations follow ZXY (body-fixed) Euler angle convention: flexion → ben
 
   ![Plane elevation 50°](/img/docs/musculoskeletal-model/shoulder-plane-elev.50.png) ![Plane elevation 0°](/img/docs/musculoskeletal-model/shoulder-plane-elev.0.png) ![Plane elevation -50°](/img/docs/musculoskeletal-model/shoulder-plane-elev.-50.png)
 
-- **Shoulder elevation** — how much the arm lifts away from the body. Positive = arm raising in any plane.
+- **Shoulder elevation** — how much the arm lifts away from the body within the current plane. Positive = arm raising.
 
   ![Elevation 0°](/img/docs/musculoskeletal-model/shoulder-elev.0.png) ![Elevation 90°](/img/docs/musculoskeletal-model/shoulder-elev.90.png) ![Elevation 150°](/img/docs/musculoskeletal-model/shoulder-elev.150.png)
 
@@ -178,10 +174,10 @@ Shoulder rotations follow YXY (body-fixed) Euler angle convention: plane elevati
 
 2 degrees of freedom — 2 rotations. Defines ulna movement relative to humerus and radius movement relative to ulna.
 
-- **Elbow flexion-extension** — 0 = full extension; increases with flexion.
+- **Elbow flexion-extension** — positive = flexion, 0 = full extension.
 
   ![Left elbow flexion](/img/docs/musculoskeletal-model/elbow-flexion-l.png)
 
-- **Forearm pronation-supination** — 0 = full supination (palm up); increases toward pronation (palm down).
+- **Forearm pronation-supination** — positive = pronation (palm down), 0 = full supination (palm up).
 
   ![Forearm pronation 0°](/img/docs/musculoskeletal-model/elbow-pronation-0-l.png) ![Forearm pronation 50°](/img/docs/musculoskeletal-model/elbow-pronation-50-l.png)

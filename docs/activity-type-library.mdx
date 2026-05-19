@@ -1,25 +1,20 @@
 ---
 id: activity-type-library
-title: Activity Type Library
-sidebar_label: Activity Type Library
+title: Activity type library
+sidebar_label: Activity type library
 ---
 
-Model Health offers a suite of pre-built modules for analyzing specific tasks. Each module segments the task (e.g., gait cycles for running or repetitions for squats) and computes key biomechanical metrics. Results can be visualized in a dashboard and are summarized in a PDF report alongside joint angles.
+Each activity type automatically segments the movement (e.g., gait cycles for walking, repetitions for squats), computes 3D kinematics and key biomechanical metrics, and compares results against normative data. Metrics are available in the subject dashboard under the **Metrics** tab, and a PDF report can be downloaded from the top-right corner.
 
-![Analysis button location](/img/docs/activity-type-library/activity-types-selector.png)
+![Activity type selector](/img/docs/activity-type-library/activity-types-selector.png)
 
-The metrics of each activity can be accessed in the subject's dashboard under the Metrics tab.
-The PDF report of every activity can be downloaded from the download button on the top right corner of the Subject's dashboard.
-
-![Analysis button location](/img/docs/activity-type-library/metrics-dashboard.png)
+![Metrics dashboard](/img/docs/activity-type-library/metrics-dashboard.png)
 
 ## Overground Walking and Running
 
 <video src="/img/docs/activity-type-library/walking-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
 
-Identifies strides and computes spatiotemporal parameters for each stride. Averages are shown in the dashboard and PDF report. For running, thresholds for red/orange/green zones are based on normative data.
-
-**Recommended setup:** participant walks or runs straight toward the cameras with no turns. Two cameras in landscape mode at ±30–40° from the walking direction works well. Position cameras so the participant enters and exits both fields of view at the same time. Three cameras with a front-facing one can reduce occlusion risk.
+Subject walks or runs through the capture volume at any self-selected speed.
 
 :::tip
 The subject may enter and exit the field of view, but cannot re-enter. 180° turns are not supported.
@@ -29,7 +24,7 @@ The subject may enter and exit the field of view, but cannot re-enter. 180° tur
 
 <video src="/img/docs/activity-type-library/running-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
 
-Same outputs as overground. If possible, have the participant face the cameras while walking/running — this limits occlusion risk. Two cameras at ±30° works well. If the participant faces away from cameras, use three cameras including one sagittal view that sees the feet.
+A walking or running analysis on a treadmill at any speed.
 
 :::tip
 Start the recording once the subject has reached a steady speed. Metrics are averaged across strides.
@@ -39,7 +34,7 @@ Start the recording once the subject has reached a steady speed. Metrics are ave
 
 <video src="/img/docs/activity-type-library/squats-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
 
-A lower-body mobility and strength test: descend into a squat and return to standing. Identifies repetitions and computes biomechanical parameters per repetition. Averages are in the dashboard and PDF report. Thresholds based on normative data.
+A lower-body mobility and strength test: descend into a squat and return to standing.
 
 
 - **Leg mode:** Single or double leg
@@ -54,7 +49,7 @@ Standard starting position: feet shoulder-width apart. Ensure the full body rema
 
 <video src="/img/docs/activity-type-library/dvj-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
 
-A reactive strength test: drop from a box, land, and immediately jump as high as possible. Identifies contact and toe-off times and computes biomechanical parameters
+A reactive strength test: drop from a box, land, and immediately jump as high as possible.
 
 - **Leg mode:** Single or double leg
 - **Direction:** Left or right
@@ -65,14 +60,14 @@ A 30 cm (12 in) box is standard. Ensure the full body remains visible throughout
 :::
 
 :::warning
-For a properly executed DVJ, the subject should step off the box — not jump off it.
+For a properly executed drop vertical jump, the subject should step off the box — not jump off it.
 :::
 
 ## Countermovement Jump
 
 <video src="/img/docs/activity-type-library/cmj-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
 
-A lower-body power test: drop into a countermovement and explode upward. Works with double-leg and single-leg CMJ, with one or more repetitions. Identifies events and computes biomechanical parameters. Recommend recording at **120 Hz**. For single-leg, three cameras is recommended.
+A lower-body power test: drop into a countermovement and explode upward.
 
 - **Leg mode:** Single or double leg
 - **Reps:** Multiple reps supported per recording
@@ -85,7 +80,7 @@ Ensure the full body remains visible throughout the jump.
 
 <video src="/img/docs/activity-type-library/sts-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
 
-A functional mobility test: rise from a chair and return to seated position. If five repetitions are identified, it also reports the time to complete five reps (a standard clinical measure). Thresholds based on normative data.
+A functional mobility test: rise from a chair and return to seated position. If five repetitions are identified, it also reports the time to complete five reps (a standard clinical measure).
 
 - **Reps:** Multiple reps supported. Standard clinical protocol is 5 reps
 - **Starting position:** Seated, arms folded across the torso
@@ -100,8 +95,6 @@ Use a standard chair without armrests. Ensure the full body remains visible thro
 
 A functional performance test: hop for maximum distance with controlled landing.
 
-Works for single, double and triple hops (including crossover hops). Identifies toe-off and contact events and calculates biomechanical parameters.
-
 - **Leg mode:** Single or double leg (broad jump)
 - **Variants:** Single, double, or triple hop, with or without crossover
 - **Reps:** Single rep per recording
@@ -114,8 +107,6 @@ Triple hops can exceed 6 m, ensure the full landing zone is within the capture v
 
 <video src="/img/docs/activity-type-library/505-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
 
-Works for 180-degree change-of-direction tasks (5-0-5 / 10-0-5 test). Identifies key events and calculates biomechanical parameters. Thresholds based on normative data.
-
 A reactive 180° change-of-direction speed test: sprint to a line, plant, and accelerate back.
 
 - **Requires:** ≥5 m before and ≥5 m after the change-of-direction line
@@ -126,20 +117,18 @@ A reactive 180° change-of-direction speed test: sprint to a line, plant, and ac
 Starting ~10 m from the line ensures a controlled approach speed.
 :::
 
-▶️ [Watch: 5-0-5 analysis demo](https://www.youtube.com/watch?v=5Tz4HB27QQI)
+[Watch: 5-0-5 analysis demo](https://www.youtube.com/watch?v=5Tz4HB27QQI)
 
-See [Activity-Specific Recommendations](/docs/activity-recommendations#505-180-degree-change-of-direction) for more detail.
-
-## Cutting manoeuvres
+## Cutting Maneuvers
 
 <video src="/img/docs/activity-type-library/cut-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
 
 A speed and agility test: sprint, cut at any angle, and re-accelerate.
 
-**Requires:** ≥5 m before and ≥4 m after the cut
-**Cut angle:** Any (e.g. 45°, 90°)
-**Direction:** Left or right
-**Reps:** Single rep per recording
+- **Requires:** ≥5 m before and ≥4 m after the cut
+- **Cut angle:** Any (e.g. 45°, 90°)
+- **Direction:** Left or right
+- **Reps:** Single rep per recording
 
 :::tip 
 Can be performed as a pre-planned or reactive cut.
@@ -147,9 +136,8 @@ Can be performed as a pre-planned or reactive cut.
 
 ## Custom activity
 
-You can record any custom activity. Model Health automatically computes the range of motion for each joint across the trial, reporting the minimum, maximum and amplitude. 
-The output can be downloaded as PDF or csv from the subject's activity dashboard under the Download button on the top right.
+You can record any custom activity. Model Health automatically computes the range of motion for each joint across the trial, reporting the minimum, maximum, and amplitude. Results can be downloaded as PDF or CSV from the Download button in the top-right corner.
 
 :::tip
-No activity-specific metrics are extracted but the Range of motion (ROM) is reported by default in the PDF report.
+No activity-specific metrics are extracted, but range of motion (ROM) is reported by default in the PDF report.
 :::

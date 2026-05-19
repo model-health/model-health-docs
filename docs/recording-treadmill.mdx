@@ -1,46 +1,44 @@
 ---
 id: recording-treadmill
-title: Treadmill activity recording
-sidebar_label: Treadmill activity recording
+title: Treadmill setup
+sidebar_label: Treadmill setup
 ---
 
-For best results on treadmill recordings, consider the following recommendations.
+Best practices for recording treadmill walking and running.
 
-The key to quality data collection is **minimizing occlusions of body segments**. Every body segment should be visible by at least two cameras at all times. Adjust camera positions based on your treadmill configuration.
+**Minimizing body segment occlusion is critical** — every segment must be visible to at least two cameras at all times. Adjust camera positions based on your treadmill configuration.
 
 :::tip
-Before finalizing your setup, have the participant perform the activity while you monitor each camera's field of view, and ensure the participant's body is visible on each device screen.
+Before finalizing your setup, have the participant perform the activity while you monitor each camera's field of view. Adjust tripod positions to minimize occlusions from guardrails, the treadmill frame, or other equipment — every body segment must remain visible on at least two screens throughout the movement.
 :::
 
-## 1. Recording set up
+## 1. Recording Setup
 
-The setups below are ranked in order of preference. Choose based on your treadmill configuration:
+Choose the setup that fits your treadmill configuration, in order of preference:
 
-### a. Cameras facing the back of the participant (recommended)
+### a. Cameras facing the front of the participant (recommended)
 
-Use this setup when the treadmill is placed against a wall or has a large front-facing display, and does not support a reverse mode (i.e., negative belt speed).
+Use this setup when the treadmill is not against a wall, the equipment does not occlude the participant, or the treadmill supports a reverse mode. Have the participant **face the cameras**.
 
-If using two cameras, start by positioning them at approximately **±30° from the participant's forward-facing direction**, then adjust as needed to reduce occlusions caused by guardrails.
+Position the cameras at **~30–40° from the participant's forward-facing direction**, then adjust as needed to reduce occlusions caused by guardrails.
 
-If a third camera is available, placing it front-facing improves capture robustness. In that case, shift the two flanking cameras to **±45°**, while still being mindful of guardrail occlusions.
+### b. Cameras facing the back of the participant
+
+Use this setup when the treadmill is against a wall, has a large front-facing display, or does not support a reverse mode. Have the participant **face away from the cameras**.
+
+Position the cameras at **~30–40° from the participant's forward-facing direction**, then adjust as needed to reduce occlusions caused by guardrails.
 
 <div style={{textAlign: 'center'}}>
   <img src="/img/docs/recording-treadmill/setup-treadmill.png" alt="Treadmill recording set up" style={{width: '60%'}} />
   <p style={{fontSize: '0.8rem', color: 'var(--ifm-color-secondary-darkest)', marginTop: '0.4rem'}}>
-    Recommended treadmill camera setup — back-facing with a third sagittal camera.
+    Treadmill camera setup.
   </p>
 </div>
 
-### b. Cameras facing the front of the participant
-
-For treadmill without front guardrails, have the participant run **facing the cameras** can offer good results — this setup typically captures the full body with just two cameras.
-
-If using two cameras, start by positioning them at approximately **±30° from the participant's forward-facing direction**, then adjust as needed to reduce occlusions caused by guardrails.
-
-If a third camera is available, placing it front-facing improves capture robustness. In that case, shift the two flanking cameras to **±45°**, while still being mindful of guardrail occlusions.
-
 ## 2. Calibration
+
 The checkerboard does not need to be aligned with the treadmill — simply ensure it is **fully visible to all cameras** and **perpendicular to the ground**.
 
 ## 3. Static pose
-Have the participant face the direction they will be facing during the activity (e.g., back-facing if running back-facing the cameras). See set up configuration options below.
+
+Have the participant face the same direction as they will during the recording. **If using the back-facing setup, perform the static pose with the participant facing away from the cameras as well**.
