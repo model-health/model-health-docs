@@ -1,6 +1,6 @@
 ---
 id: howto-compare-activities
-title: Compare activities for the same subject
+title: Compare activities
 sidebar_label: Compare activities
 ---
 
@@ -27,11 +27,11 @@ export const ZoomableImage = ({ src, alt, caption }) => {
 
 import React from 'react';
 
-The **Replay** view lets you overlay multiple recordings of the same activity type side by side — useful for tracking progress over time or comparing left vs. right trials.
+The **Replay** view lets you overlay multiple recordings of the same activity type — useful for tracking progress over time or comparing left vs. right trials.
 
 ### Step 1. Open a subject and select a first activity
 
-Navigate to a subject and open any completed activity. In the **Activities** panel on the left, click a trial to load it into the 3D replay view. The skeleton and joint angle graph will update to reflect that recording.
+Navigate to a subject. In the **Activities** panel on the left, click any completed trial to load it into the Replay view. The 3D skeleton and joint angle curves will update to reflect the selected trial.
 
 <ZoomableImage
   src="/img/docs/howto-compare-activities/howto-compare-activities-single.png"
@@ -41,7 +41,7 @@ Navigate to a subject and open any completed activity. In the **Activities** pan
 
 ### Step 2. Add more activities to the comparison
 
-With the first activity loaded, click additional trials in the **Activities** panel to add them to the overlay. Each activity is assigned a distinct color — the 3D skeletons and the joint angle curves are all rendered simultaneously, making differences in movement pattern immediately visible.
+With the first activity loaded, click additional trials in the **Activities** panel to add them to the overlay. Each activity is assigned a distinct color — 3D skeletons and joint angle curves are rendered simultaneously, making differences in movement patterns immediately visible.
 
 <ZoomableImage
   src="/img/docs/howto-compare-activities/howto-compare-activities-multiple.png"

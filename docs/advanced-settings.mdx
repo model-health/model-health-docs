@@ -1,7 +1,7 @@
 ---
 id: advanced-settings
-title: Advanced Settings
-sidebar_label: Advanced Settings
+title: Advanced settings
+sidebar_label: Advanced settings
 ---
 
 export const ZoomableImage = ({ src, alt, caption }) => {
@@ -27,28 +27,28 @@ export const ZoomableImage = ({ src, alt, caption }) => {
 
 import React from 'react';
 
-:::warning Overview
-Advanced settings let you customize how we calibrate your set up, record and analyze your data. A part from checkerboard settings, we recommend keeping the default value unchanged, as they have been carefully selected to provide the best results.  
+:::info
+Advanced settings let you customize how Model Health calibrates your setup, records, and analyzes your data. Apart from checkerboard settings, we recommend keeping the defaults unchanged — they have been carefully selected to provide the best results.
 :::
 
 Settings are spread across three panels that appear at different points in the recording flow.
 
 ---
 
-## 1. Checkerboard Settings
-**Where:** During session setup, at the *Position & Calibrate* step.
+## 1. Checkerboard settings
+**When:** During setup, at the *Position & Calibrate* step.
 
-Let you configure the physical checkerboard used to calibrate your cameras. Open the **Checkerboard settings** panel on the right side of the calibration screen.
+These settings let you configure the physical checkerboard used to calibrate your cameras. Open the **Checkerboard settings** panel on the right side of the calibration screen.
 
 <ZoomableImage
   src="/img/docs/advanced-settings/setup-calib-settings.png"
   alt="Checkerboard settings panel"
-  caption="Checkerboard settings appear during the calibration step of session setup."
+  caption="Checkerboard settings appear during the setup calibration step."
 />
 
 ### Board position
 Choose how the checkerboard will be placed during calibration:
-- **Perpendicular to the floor** *(default)* — board is held or stood upright.
+- **Perpendicular to the floor** *(default)* — board stands upright, perpendicular to the ground.
 - **Lying on the floor** — board lies flat on the ground.
 
 ### Rows and Columns
@@ -58,18 +58,18 @@ Enter the number of **inner corner rows** and **inner corner columns** on your p
 Enter the size of one square on your checkerboard in millimetres. Default is **35 mm**. Measure your printed board and enter the accurate value — an incorrect size will affect the scale of the reconstruction.
 
 :::warning Adjusting the default
-Adjusting checkerboard parameters on this panel only applies for the ongoing setup calibration step.
-If you want to adjust the default value for all future setups, you can **update your checkerboard dimensions in the app Settings** — this is critical for accurate measurements.
+Adjusting checkerboard parameters on this panel only applies to the current calibration step.
+If you want to adjust the default values for all future setups, you can **update your checkerboard dimensions in the App Settings** — this is critical for accurate measurements.
 <ZoomableImage src="/img/docs/getting-started/update-checkerboard-default.png" alt="Checkerboard setup" style={{width: '280px', marginLeft: '2rem', marginBottom: '0.5rem'}} />
  
 :::
 
 ---
 
-## 2. Subject Scaling Settings
+## 2. Subject scaling settings
 **When:** During the recording flow, at the *Record static pose* step.
 
-Optionally adjust your model scaling settings before recording the neutral pose. Open the **Subject scaling settings** panel on the right.
+You can adjust the model scaling settings before recording the neutral pose. Open the **Subject scaling settings** panel — the button appears below the example neutral pose image on screen.
 
 <ZoomableImage
   src="/img/docs/advanced-settings/model-calib-settings.png"
@@ -81,48 +81,47 @@ Optionally adjust your model scaling settings before recording the neutral pose.
 We use the neutral pose to scale the musculoskeletal model to the subject's body dimensions.
 
 - **Upright standing pose** *(recommended, default)* — assumes the subject stands upright with feet pointing forward, straight back, no bending or rotation at hips, knees, or ankles.
-- **Any pose** — use this if the subject cannot adopt an upright neutral pose. Does not assume a specific posture but still requires all body segments to be visible by at least two cameras.
-
-We recommend the default unless the subject is unable to stand in an upright neutral pose.
+- **Any pose** — use this if the subject cannot adopt an upright neutral pose. All body segments must be visible to at least two cameras, and the subject must remain still during the recording.
 
 ### Musculoskeletal model
 Choose the biomechanical model to use for this analysis:
 
 - **Full body model with ISB shoulder** *(default)* — a 33 degree-of-freedom model based on [Lai et al. 2017](https://pubmed.ncbi.nlm.nih.gov/28900782/) with modified hip abductor paths from [Uhlrich et al. 2022](https://pubmed.ncbi.nlm.nih.gov/35798755/), plus a 6 degree-of-freedom shoulder complex using the ISB-recommended Y-X-Y glenohumeral rotation sequence ([Wu et al. 2005](https://pubmed.ncbi.nlm.nih.gov/15844264/)). Recommended for upper extremity tasks and suitable for all activities.
-- **Full body model** — the same model without the ISB shoulder complex.
+- **Full body model** — the same model with a simpler 3 degree-of-freedom shoulder complex.
 
 ### Core engine
-The core engine runs the marker augmentation and inverse kinematics pipeline.
+The core engine converts raw videos into 3D motion data.
 
-- **v1.0** *(recommended, default)* — latest version, more accurate and robust across activities. Recommended for most use cases.
-- **v0.3** *(old model, default until 04-01-2026)* — previous version.
-- **v0.2** *(old model, default until 07-30-2023)* — legacy version. 
+- **v1.0** *(recommended, default)* — latest version, more accurate and robust across activities. Recommended.
+- **v0.3** *(old model, default until 04-01-2026)* — previous version (formerly named marker augmenter v0.3).
+- **v0.2** *(old model, default until 07-30-2023)* — legacy version (formerly named marker augmenter v0.2).
+
 ---
 
 ## 3. Video Recording Settings
 **When:** During the recording flow, at the *Activity recording* step.
 
-Optionally adjust recording parameters before starting a trial. Click the **Recording settings** button at the bottom of the activity recording screen.
+You can adjust recording parameters before starting a recording. Click the **Recording settings** button at the bottom-left of the activity recording screen.
 
 <ZoomableImage
   src="/img/docs/advanced-settings/video-recording-settings.png"
   alt="Video recording settings panel"
-  caption="Video recording settings appear on the activity recording screen, before starting a trial."
+  caption="Video recording settings appear on the activity recording screen, before starting a recording."
 />
 
 ### Frame rate
-Record videos at **60, 120, or 240 fps**. There is a different default based on the activity type.
+Record videos at **60, 120, or 240 fps**. The default varies by activity type.
 
 - Higher frame rates capture fast movements more accurately but increase upload and processing time.
-- **120 fps** is recommended for most activities.
-- Use **60 fps** if processing speed is a concern — consider applying a filter (see below) to reduce noise.
+- Defaults: **120 fps** for most activities, **60 fps** for walking, squats, and sit-to-stand, and **240 fps** for sprinting.
+- Use **60 fps** if processing speed is a priority — consider applying a filter (see below) to reduce noise.
 
 ### Filter frequency
 We apply a low-pass Butterworth filter to smooth 2D video keypoints before reconstruction.
 
-**Default behavior:** half the frame rate (e.g. 60 Hz at 120 fps recording), except for gait activities which default to **12 Hz**.
+- Defaults: **20 Hz**, except for walking, squats, and sit-to-stand activities (**12 Hz**).
 
-Enter a custom value in Hz, or just leave as `default`.
+Enter a custom value in Hz, or leave it as `default`.
 
 :::warning
 - Per the Nyquist theorem, the filter frequency must be less than half the frame rate. Values above this limit will be capped automatically.

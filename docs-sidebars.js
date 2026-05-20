@@ -17,7 +17,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Recording set up guides',
+      label: 'Recording guides',
       collapsed: true,
       customProps: { icon: 'Video' },
       items: [
@@ -28,7 +28,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'How to',
+      label: 'Workflows',
       collapsed: true,
       customProps: { icon: 'Lightbulb' },
       items: [
