@@ -30,19 +30,54 @@ Before you start your first movement analysis, make sure you have the right equi
 - **A laptop or tablet** — for running the web app at [app.modelhealth.io](https://app.modelhealth.io). Any modern device and browser works.
 - **At least 2 iOS devices** — for recording. Any model released in 2018 or later. See the [list of supported devices](#supported-ios-devices-for-recording) below.
 - **Tripods and phone holders** — for stabilizing each recording device. One per iOS device.
-- **Checkerboard** — for camera calibration. Print [this checkerboard](/img/docs/getting-started/checkerboard-4x5-35mm.pdf) on A4 paper and mount it to a flat surface.
-
-:::warning Measure your checkerboard squares
-Print at **actual size (100% scale)** with no scaling and no "Fit to Page". The expected square size is exactly **35mm**.
-
-In case your printed checkerboard does not have exactly 35mm squares, **update your checkerboard dimensions in the app Settings** — this is critical for accurate measurements.
-<ZoomableImage src="/img/docs/getting-started/update-checkerboard-default.png" alt="Checkerboard setup" style={{width: '280px', marginLeft: '2rem', marginBottom: '0.5rem'}} />
-
-:::
-
+- **A printed checkerboard** — for camera calibration. Pick the right size and measure it before your first session — see [Checkerboard](#checkerboard) below.
 - **A stable internet connection** — required for both the iOS app and web platform. Recording devices don't need to share the same network, but each needs connectivity to sync with the web app.
 
+## Checkerboard
 
+The checkerboard sets the scale of the 3D reconstruction, so getting it right is the single most important piece of preparation.
+
+### 1. Choose a size
+
+**If you can print large format, print the large board and use it for everything.** It works indoors just as well as outdoors, and keeping a single board means the square size in your settings never has to change — alternating between two boards and forgetting to update the size is one of the most common sources of error.
+
+Print the small board only if large-format printing isn't practical for you *and* you record exclusively indoors in small capture volumes.
+
+All four templates below are the same board — a **5 × 4 inner-corner** grid (6 × 5 squares) — printed at two different scales. Use whichever paper format your printer takes: Tabloid and Letter in the US, A3 and A4 elsewhere.
+
+| Template | Paper | Square size | Printed board | Use it for |
+|---|---|---|---|---|
+| [Tabloid / Ledger](/img/docs/getting-started/tabloid-checkerboard.pdf) | Tabloid / Ledger (11 × 17 in) | 50 mm | 30 × 25 cm | **Everything — recommended default** |
+| [A3](/img/docs/getting-started/a3-checkerboard.pdf) | A3 (297 × 420 mm) | 50 mm | 30 × 25 cm | **Everything — recommended default** |
+| [Letter](/img/docs/getting-started/letter-checkerboard.pdf) | Letter (8.5 × 11 in) | 35 mm | 21 × 17.5 cm | Indoor, small capture volumes only |
+| [A4](/img/docs/getting-started/a4-checkerboard.pdf) | A4 (210 × 297 mm) | 35 mm | 21 × 17.5 cm | Indoor, small capture volumes only |
+
+The small board is fine when the cameras sit within about 3–4 m of it — treadmill running, gait in a lab or hallway, jumps, squats. Outdoors and in large capture volumes, the cameras end up 4–5 m away and often wider apart, and calibration becomes less unreliable or might fail. **Sprints, cuts, 505s, and field sessions in general need the large board**.
+
+### 2. Print at 100% scale
+
+Print at **actual size (100% scale)**, with scaling and "Fit to Page" turned off. Mount the board on a rigid flat surface (foam board or stiff cardboard) and keep 1-2 centimeters of white border on all sides.
+
+### 3. Measure the squares and update the app
+
+:::warning Always measure your printed board
+Printers and paper handling almost always shift the output by a percent or two, so printed squares are rarely exactly 35 mm or 50 mm. **Measure your own board and enter the measured value in the app** — this is critical for accurate measurements.
+:::
+
+The square size is the only thing that tells Model Health how big the world is, so an error in it scales **every** length in your results by the same percentage. Entering 35 mm for a board that actually measures 34 mm is a 2.9% error: a true 40 cm jump height would be reported as roughly 41 cm, and lengths or speeds would all be off by that same 2.9%.
+
+Update the value:
+
+- **App Settings (recommended)** — set your measured square size as the default for all future sessions.
+<ZoomableImage src="/img/docs/getting-started/update-checkerboard-default.png" alt="Updating the default checkerboard dimensions in App Settings" style={{width: '280px', marginLeft: '2rem', marginBottom: '0.5rem'}} />
+
+- **Checkerboard settings** panel on the calibration screen — overrides the default for the current session only. See [Advanced Settings](/docs/advanced-settings#1-checkerboard-settings).
+
+
+
+:::note
+Rows and columns refer to **inner corners** (black-to-black), not squares. All four templates have 5 columns × 4 rows of inner corners, which is the app default.
+:::
 
 
 ## Mobile App
