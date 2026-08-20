@@ -47,7 +47,7 @@ model-health-docs/
 └── package.json
 ```
 
-All files must use `lowercase-kebab.ext` for consistency.
+All files and ids must use `lowercase-kebab.ext` for consistency.
 
 ## Releasing
 

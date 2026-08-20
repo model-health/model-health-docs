@@ -9,7 +9,7 @@ const sidebars = {
       collapsed: false,
       customProps: { icon: 'Rocket' },
       items: [
-        'Checklist',
+        'getting-started',
         'recording-first',
         'activity-type-library',
         'best-practices',
