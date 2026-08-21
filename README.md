@@ -47,11 +47,13 @@ model-health-docs/
 └── package.json
 ```
 
-All files and ids must use `lowercase-kebab.ext` for consistency.
-
 ## Releasing
 
-To cut a new release:
+There is a GitHub action for automatic deployment. All you have to do is merge everything on `develop` to `main` (a Fast Forward should be all you need here) and
+tag it with `v<maj>.<min>.<patch>`. Once the tag is pushed to origin the deployment
+will happen automatically.
+
+To manually cut a new release:
 
 ```bash
 make release
