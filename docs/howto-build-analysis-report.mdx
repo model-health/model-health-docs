@@ -1,0 +1,235 @@
+---
+id: howto-build-analysis-report
+title: Build an analysis report
+sidebar_label: Build an analysis report
+---
+
+export const ZoomableImage = ({ src, alt, caption, width = '80%' }) => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <>
+      <div style={{textAlign: 'center'}}>
+        <img
+          src={src} alt={alt}
+          onClick={() => setOpen(true)}
+          style={{width, cursor: 'zoom-in', borderRadius: '6px'}}
+        />
+        {caption && <p style={{fontSize: '0.8rem', color: 'var(--ifm-color-secondary-darkest)', marginTop: '0.4rem'}}>{caption}</p>}
+      </div>
+      {open && (
+        <div onClick={() => setOpen(false)} style={{position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999, cursor: 'zoom-out', padding: '2rem'}}>
+          <img src={src} alt={alt} style={{maxWidth: '90vw', maxHeight: '90vh', borderRadius: '8px', boxShadow: '0 8px 40px rgba(0,0,0,0.6)'}} />
+        </div>
+      )}
+    </>
+  );
+};
+
+The Summary tab is where you assemble the report for a single activity. You choose which
+visualization modules appear, which metrics and graphs sit inside them, and then export the result as a
+PDF that matches what is on screen. 
+
+Use the default template for each [activity type](activity-type-library) or save your own template.
+
+import React from 'react';
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/custom-report-highlight.png"
+  alt="Customize your dashboard and PDF report"
+  caption="Customize your dashboard and PDF report."
+/>
+
+**Where to find it:** open a subject, select an activity, then open the **Summary** tab.
+
+The activity header shows the activity name, the number of reps, and the capture date and
+time. Session tags appear on the right of the header.
+
+---
+
+## Choosing your visualization modules
+
+The **Modules** bar sits directly under the activity header. Each module has a checkmark you
+can toggle on or off. Turning a module off removes it from the page and from the exported
+PDF.
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/modules-header.png"
+  alt="Customize your dashboard and PDF report"
+  caption="Customize your dashboad and PDF layout by selecting pre-built visualization modules."
+/>
+
+Nine modules are currently available:
+
+- **Notes**: free-text context you write.
+- **Metric overview**: headline metric cards with normative ranges
+- **Per-rep results**: values broken down rep by rep or stride by stride
+- **Media viewers**: video and 3D reconstruction panels
+- **Metric trend**: how a metric has moved across previous sessions
+- **Kinematics time series**: joint angles plotted against time
+- **Normalized joint kinematics**: joint angles normalized across the movement cycle
+- **Detailed results**: the full metric table
+- **Definitions**: plain-language explanations of each metric
+
+:::tip
+Each module card has
+- A **close button** in its top-right corner, which allows removing it from the report in the same way as unchecking it.
+- A **reduce/enlarge button** in its right corner, allowing the module to be reduced to a half‑page section or enlarged to a full‑width page section.
+- A **re‑arrange button** in its top‑left corner, which allows moving the section up or down by dragging it.
+:::
+---
+
+## Module reference
+
+### Notes
+
+A free-text field in the left panel. Use it to record observations, key details, or follow-up
+actions. Notes are limited to 200 characters and are included in the PDF export.
+
+### Metric overview
+
+Shows your selected metrics as cards. Each card gives the value, the unit, and a coloured
+band showing where the value falls against the reference range. Bilateral metrics display
+left and right values side by side.
+
+- Select **Add metric card** to pick another metric from the library for this activity type
+- Select the close button on a card to remove it
+- Metric cards are chosen per activity type, so a countermovement jump and a cutting manoeuvre
+  can show different headline metrics
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/metric-overview.png"
+  alt="Choose the metrics you want to highlight."
+  caption="Choose the metrics you want to highlight."
+/>
+
+:::tip
+Normative data ranges can be toggled off from the dashboard and the report via the Filters menu at the top-right of the dashboard page.
+:::
+
+### Media viewers
+
+Insert snapshots of the raw video and/or the 3D reconstruction at specific events.
+
+Media controlers at your disposal include:
+- A source dropdown, set to either **Video**, **3D** or both side by side
+- An **Event** dropdown that jumps the viewer to a key event such as toe-off or landing
+- Playback controls with frame-by-frame stepping and a scrub bar
+- An expand control for full-screen viewing in the dasbhoard, similar to your Replay functionalities
+
+For video, an on-screen counter shows which capture you are viewing, with arrows to move
+between the available camera angles. For 3D, a **Sagittal / Frontal** toggle switches the
+camera view.
+
+Select **Add viewer** to place additional media viewer panels in the module.
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/media-viewer.png"
+  alt="Choose your viewer, event, view angle (Sagittal or Frontal), and a specific event to visualize."
+  caption="Choose your viewer, event, view angle (Sagittal or Frontal), and a specific event to visualize."
+/>
+
+### Metric trend
+
+Plots one metric across previous sessions so you can see the direction of travel.
+
+- Pick the metric from the dropdown
+- Use the **Last 1 / Last 3 / Last 10 / All** selector to set the comparison window
+- Select **Add trend card** for a second metric
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/trend-graph.png"
+  alt="Access and plot the evolution of metrics across multiple sessions."
+  caption="Access and plot the evolution of metrics across multiple sessions."
+  width="40%"
+/>
+
+### Per-rep results
+
+Breaks the session down into its individual repetitions. The card shows the session value at
+the top and a bar per rep underneath. For treadmill running the same card displays per-stride
+values with a left, right, and both selector, alongside the asymmetry percentage.
+
+Select **Add per-rep card** for another metric.
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/per-rep-graph.png"
+  alt="Access and plot the results from individual repetitions."
+  caption="Access and plot the results from individual repetitions."
+  width="40%"
+/>
+
+### Normalized joint kinematics
+
+A grid of joint angle curves normalized to the movement cycle, with the x-axis running from 0
+to 100% of the rep. Left is drawn as a solid line, right as a dashed line, and the shaded band
+shows the 95% confidence interval.
+
+Select **Add joint angle** to add another joint to the grid.
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/normalized-kinematics.png"
+  alt="Access kinematic variables and plot them, normalized across repetitions."
+  caption="Access kinematic variables and plot them, normalized across repetitions."
+/>
+
+### Kinematics time series
+
+Plots joint angles against elapsed time rather than the normalized cycle.
+
+- **Key events** marks event lines and phase shading on the chart. Legend is added to the PDF report automatically.
+- The series selector controls which joints and sides are drawn
+- Select **Add kinematic graph** for an additional chart
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/kinematic-timeseries.png"
+  alt="Access raw kinematic time series."
+  caption="Access raw kinematic time series."
+/>
+
+### Detailed results
+
+The complete metric table for the activity, with left, right, and asymmetry columns. A
+selector at the top right switches between **By rep**, **All reps**, and **Aggregate**.
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/detailed-results.png"
+  alt="Access detailed metric results for each repetition individually, or as an aggregate value across the recorded activity."
+  caption="Access detailed metric results for each repetition individually, or as an aggregate value across the recorded activity."
+/>
+
+### Definitions
+
+An optional section explaining what each metric measures. It is collapsed by default and has
+an **Include in PDF** checkbox, so you can show definitions to a reader who needs them without
+carrying them in every export.
+
+---
+
+## Saving a layout as a template
+
+Once the report looks the way you want it:
+
+1. Select **Save as template**
+2. The current module selection and layout is stored as your default
+
+The template applies across activity types, so every new report opens with the same structure.
+Select **Reset layout** to return to the default configuration.
+
+<ZoomableImage
+  src="/img/docs/howto-build-analysis-report/menu-items.png"
+  alt="Save the current dashboard as a template or reset to the default layout."
+  caption="Save the current dashboard as a template or reset to the default layout."
+  width="80%"
+/>
+
+---
+
+## Exporting a PDF
+
+1. Select **Export PDF**
+2. A confirmation dialog appears, describing what will be exported
+3. Select **Download PDF**
+
+The export reflects the sections and layout currently shown on screen. Anything you have
+turned off is left out, and your notes and any media snapshots are included. Longer reports
+take a few moments to prepare, and the download starts automatically once the file is ready.

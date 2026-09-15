@@ -36,7 +36,8 @@ const sidebars = {
         'howto-compare-subjects',
         'analysis-group-leaderboards',
         'export-data-python',
-        'howto-share-activity'
+        'howto-share-activity',
+        'howto-build-analysis-report'
       ],
     },
     {
