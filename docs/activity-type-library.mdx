@@ -4,11 +4,13 @@ title: Activity type library
 sidebar_label: Activity type library
 ---
 
-Each activity type automatically segments the movement (e.g., gait cycles for walking, repetitions for squats), computes 3D kinematics and key biomechanical metrics, and compares results against normative data. Metrics are available in the subject dashboard under the **Metrics** tab, and a PDF report can be downloaded from the top-right corner.
+To date, we support 15 distinct activity types. 
 
-![Activity type selector](/img/docs/activity-type-library/activity-types-selector.png)
+Each activity type automatically segments the movement (e.g., gait cycles for walking, repetitions for squats), 
+computes 3D kinematics and key biomechanical metrics, and compares results against normative data. 
+Computed metrics are available in the subject dashboard under the **Metrics** tab, and a PDF report can be downloaded from the top-right corner.
 
-![Metrics dashboard](/img/docs/activity-type-library/metrics-dashboard.png)
+Selecting [custom activity](#custom-activity) will allow you to record any movement and compute the range of motion of any joint across the recorded movement.
 
 ## Overground Walking and Running
 
@@ -63,6 +65,23 @@ A 30 cm (12 in) box is standard. Ensure the full body remains visible throughout
 For a properly executed drop vertical jump, the subject should step off the box — not jump off it.
 :::
 
+## Drop Vertical Jump - LESS Evaluation
+
+An automated Landing Error Scoring System (LESS) evaluation on a double-leg drop vertical jump, to assess landing mechanics and identify injury risk factors. A lower LESS score is better.
+
+- **Leg mode:** Only double leg
+- **Reps:** Multiple reps supported per recording
+
+:::tip
+- The subject must jump forwards a distance of approximately 50% of their height, followed by a maximal vertical jump with minimal forward movement.
+- The focus of this test is on absorptive landing mechanics, not on reactivity. Highly reactive jumps may have an increased (worse) score, even if overall mechanics are solid.
+- 💡 A 30 cm (12 in) box is standard. Ensure the full body remains visible throughout the jump.
+:::
+
+:::warning
+**BETA**: Scoring thresholds are under development.
+:::
+
 ## Countermovement Jump
 
 <video src="/img/docs/activity-type-library/cmj-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
@@ -89,6 +108,18 @@ A functional mobility test: rise from a chair and return to seated position. If 
 Use a standard chair without armrests. Ensure the full body remains visible throughout.
 ::: 
 
+## Lateral Step Down
+
+A single-leg assessment to evaluate side-to-side differences in lower-limb strength, mobility, and movement control.
+
+- **Leg mode:** Single leg
+- **Repetitions** Multiple repetitions supported per recording
+
+:::tip
+💡 Execution: stand on the edge of a step with one foot planted and the other hovering off the side. Descend as deep as possible. To ensure consistent results, avoid shifting weight to the hovering foot when touching the floor.
+::: 
+
+
 ## Hop
 
 <video src="/img/docs/activity-type-library/hops-trimmed.mp4" autoPlay muted loop playsInline style={{width: '320px', borderRadius: '8px', marginBottom: '1rem'}} />
@@ -102,6 +133,18 @@ A functional performance test: hop for maximum distance with controlled landing.
 :::tip
 Triple hops can exceed 6 m, ensure the full landing zone is within the capture volume. For crossover hops, the first jump is typically medial.
 :::
+
+## Lunges
+
+A lower-body exercise that tests strength, mobility, and balance.
+
+- **Variants supported:** Forward, reverse and walking lunges are supported. Metrics are always computed for the front leg, regardless of execution type.
+- **Reps:** Multiple repetitions are supported per recording.
+
+:::tip
+Execution: Start from a standing position and step forward or backward, attempting to maintain balance at all times. Push forcefully to return to the starting position. Walking lunges are repeated forward steps.
+:::
+
 
 ## 5-0-5
 
@@ -132,6 +175,17 @@ A speed and agility test: sprint, cut at any angle, and re-accelerate.
 
 :::tip 
 Can be performed as a pre-planned or reactive cut.
+::: 
+
+## Sprinting 
+
+A pure speed test: accelerate and reach maximum velocity through the capture zone.
+
+- **Distance:** Any — the subject may start outside the field of view
+- **Reps:** Single rep per recording
+
+:::tip 
+For improved results consitency, only the final strides before the subject exits the field of view are analyzed — starting earlier allows for a full acceleration before the capture zone.
 ::: 
 
 ## Custom activity
